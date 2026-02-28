@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pushkar Hedau — Data & AI Engineer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --navy: #0a1628;
+  --navy2: #0f1f38;
+  --navy3: #162847;
+  --slate: #1e3a5f;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dim: rgba(201,168,76,0.1);
+  --gold-border: rgba(201,168,76,0.2);
+  --white: #f8f6f2;
+  --off-white: #ede9e1;
+  --muted: #8a9ab5;
+  --dim: #4a5d7a;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,168,76,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(30,58,95,0.6) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 64px;
+  background: rgba(10,22,40,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand { display: flex; align-items: center; gap: 14px; }
+.nav-monogram {
+  width: 38px; height: 38px;
+  border: 1px solid var(--gold-border);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.nav-name { font-size: 14px; font-weight: 600; letter-spacing: 0.04em; }
+.nav-sub { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 12px; font-weight: 500; color: var(--muted);
+  text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-cta {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--navy); background: var(--gold); text-decoration: none;
+  padding: 10px 24px; border-radius: 2px; transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--gold-light); }
+
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 140px 64px 100px;
+  position: relative; z-index: 1;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center; width: 100%; max-width: 1200px;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+  animation: fadeIn 0.8s ease both;
+}
+.eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+.eyebrow-text {
+  font-family: var(--mono); font-size: 11px; color: var(--gold);
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+.hero-name {
+  font-family: var(--serif); font-size: clamp(44px, 6vw, 72px);
+  font-weight: 700; line-height: 1.05; margin-bottom: 20px;
+  animation: fadeIn 0.8s 0.1s ease both;
+}
+.hero-name em { font-style: italic; color: var(--gold-light); font-weight: 400; }
+.hero-roles {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  animation: fadeIn 0.8s 0.2s ease both;
+}
+.role-chip {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+  color: var(--gold); background: var(--gold-dim);
+  border: 1px solid var(--gold-border); padding: 5px 12px; border-radius: 2px;
+}
+.hero-desc {
+  font-size: 16px; color: var(--muted); line-height: 1.8;
+  margin-bottom: 40px; font-weight: 300;
+  animation: fadeIn 0.8s 0.3s ease both;
+}
+.hero-desc strong { color: var(--off-white); font-weight: 500; }
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeIn 0.8s 0.4s ease both;
+}
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: var(--navy);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 2px; text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-gold:hover { background: var(--gold-light); box-shadow: 0 8px 24px rgba(201,168,76,0.2); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border2); color: var(--muted);
+  font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 2px; text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--gold-border); color: var(--gold-light); }
+
+.hero-card {
+  background: var(--navy2); border: 1px solid var(--border2);
+  border-radius: 6px; overflow: hidden;
+  animation: fadeIn 0.8s 0.2s ease both;
+}
+.hero-card-header {
+  background: var(--slate); padding: 18px 28px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.hero-card-title {
+  font-family: var(--mono); font-size: 11px; color: var(--gold);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.status-badge {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 10px; color: #5fcc8a;
+}
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: #5fcc8a; animation: blink 2s infinite; }
+.hero-card-body { padding: 28px; }
+.impact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.impact-item {
+  background: var(--navy3); border: 1px solid var(--border);
+  border-radius: 4px; padding: 14px;
+}
+.impact-num {
+  font-family: var(--serif); font-size: 26px; font-weight: 700;
+  color: var(--gold-light); line-height: 1; margin-bottom: 4px;
+}
+.impact-label { font-size: 11px; color: var(--muted); }
+.card-divider { height: 1px; background: var(--border); margin: 16px 0; }
+.stack-label {
+  font-family: var(--mono); font-size: 10px; color: var(--dim);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;
+}
+.tech-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.tech-pill {
+  font-family: var(--mono); font-size: 11px; color: var(--muted);
+  background: var(--navy3); border: 1px solid var(--border); padding: 4px 10px; border-radius: 2px;
+}
+.tech-pill.p { color: var(--gold); background: var(--gold-dim); border-color: var(--gold-border); }
+
+section { padding: 100px 64px; position: relative; z-index: 1; }
+.sec-header {
+  margin-bottom: 52px; padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+.sec-eye {
+  font-family: var(--mono); font-size: 10px; color: var(--gold);
+  letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 6px;
+}
+.sec-title { font-family: var(--serif); font-size: 34px; font-weight: 700; }
+
+.timeline { position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 8px; bottom: 0;
+  width: 1px; background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.exp-item { padding-left: 36px; padding-bottom: 48px; position: relative; }
+.exp-item::before {
+  content: ''; position: absolute; left: -4px; top: 6px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--gold); border: 2px solid var(--navy);
+}
+.exp-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 4px; flex-wrap: wrap; }
+.exp-co { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+.exp-period {
+  font-family: var(--mono); font-size: 10px; color: var(--muted);
+  background: var(--navy3); border: 1px solid var(--border);
+  padding: 3px 10px; border-radius: 2px;
+}
+.exp-role { font-family: var(--serif); font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+.exp-loc { font-size: 13px; color: var(--dim); margin-bottom: 24px; }
+
+.proj-cards { display: flex; flex-direction: column; gap: 14px; }
+.proj-card {
+  background: var(--navy2); border: 1px solid var(--border);
+  border-radius: 4px; overflow: hidden; transition: border-color 0.3s;
+}
+.proj-card:hover { border-color: var(--border2); }
+.proj-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px; background: var(--navy3); border-bottom: 1px solid var(--border);
+}
+.proj-name { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+.proj-client { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+.proj-body { padding: 14px 20px; display: flex; flex-direction: column; gap: 8px; }
+.pt {
+  display: flex; gap: 10px; font-size: 13.5px; color: var(--muted); line-height: 1.65;
+}
+.pt-dot { color: var(--gold); font-size: 10px; margin-top: 5px; flex-shrink: 0; }
+.pt strong { color: var(--off-white); font-weight: 500; }
+.badge {
+  display: inline; font-family: var(--mono); font-size: 10px;
+  padding: 1px 6px; border-radius: 2px; margin-left: 4px; vertical-align: middle;
+}
+.bg { color: var(--gold); background: var(--gold-dim); border: 1px solid var(--gold-border); }
+.bgr { color: #5fcc8a; background: rgba(95,204,138,0.08); border: 1px solid rgba(95,204,138,0.2); }
+.bbl { color: #7db9e8; background: rgba(125,185,232,0.08); border: 1px solid rgba(125,185,232,0.2); }
+
+.sk-section { background: var(--navy2); }
+.sk-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+}
+.sk-block { background: var(--navy2); padding: 26px; transition: background 0.2s; }
+.sk-block:hover { background: var(--navy3); }
+.sk-block-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+}
+.sk-icon { font-size: 17px; }
+.sk-ttl { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+.sk-list { display: flex; flex-direction: column; gap: 8px; }
+.sk-row { display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
+.sk-row span:first-child { color: var(--off-white); }
+.sk-lv { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; }
+.lv-e { color: var(--gold); }
+.lv-p { color: #7db9e8; }
+.lv-f { color: var(--dim); }
+
+.certs-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.cert-card {
+  background: var(--navy2); border: 1px solid var(--border);
+  border-radius: 4px; padding: 26px 30px;
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 18px; align-items: center; transition: border-color 0.3s;
+}
+.cert-card:hover { border-color: var(--gold-border); }
+.cert-ico {
+  width: 44px; height: 44px; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; border: 1px solid var(--border);
+}
+.cert-ttl { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+.cert-org { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+.cert-status {
+  font-family: var(--mono); font-size: 10px; color: #5fcc8a;
+  background: rgba(95,204,138,0.08); border: 1px solid rgba(95,204,138,0.2);
+  padding: 5px 12px; border-radius: 2px; white-space: nowrap;
+}
+
+.contact-section { border-top: 1px solid var(--border); }
+.contact-grid { display: grid; grid-template-columns: 5fr 4fr; gap: 80px; align-items: start; }
+.contact-hl { font-family: var(--serif); font-size: clamp(30px, 4vw, 50px); font-weight: 700; line-height: 1.1; margin-bottom: 18px; }
+.contact-hl em { font-style: italic; color: var(--gold-light); font-weight: 400; }
+.contact-desc { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 32px; font-weight: 300; max-width: 480px; }
+.contact-items { display: flex; flex-direction: column; gap: 14px; }
+.contact-item { display: flex; align-items: center; gap: 14px; text-decoration: none; transition: opacity 0.2s; }
+.contact-item:hover { opacity: 0.75; }
+.ci-icon {
+  width: 38px; height: 38px; background: var(--navy2);
+  border: 1px solid var(--border); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center; font-size: 15px;
+}
+.ci-lbl { font-family: var(--mono); font-size: 10px; color: var(--dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+.ci-val { font-size: 14px; color: var(--off-white); }
+
+.avail-card { background: var(--navy2); border: 1px solid var(--border); border-radius: 6px; padding: 26px; }
+.avail-head {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
+}
+.avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #5fcc8a; animation: blink 2s infinite; }
+.avail-lbl { font-family: var(--mono); font-size: 11px; color: #5fcc8a; letter-spacing: 0.08em; text-transform: uppercase; }
+.avail-roles-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+.avail-role {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--muted);
+}
+.avail-role::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.mini-label { font-family: var(--mono); font-size: 10px; color: var(--dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.sm-tag {
+  font-family: var(--mono); font-size: 10px; color: var(--muted);
+  background: var(--navy3); border: 1px solid var(--border);
+  padding: 4px 10px; border-radius: 2px;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 20px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ft { font-family: var(--mono); font-size: 11px; color: var(--dim); letter-spacing: 0.06em; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink {
+  0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+}
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-monogram">PH</div>
+    <div>
+      <div class="nav-name">Pushkar Hedau</div>
+      <div class="nav-sub">Data & AI Engineer</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:pushkar1211@gmail.com" class="nav-cta">Get in Touch</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <div class="eyebrow-text">Data & AI Engineer · Pune, India</div>
+      </div>
+      <h1 class="hero-name">Pushkar<br><em>Hedau</em></h1>
+      <div class="hero-roles">
+        <span class="role-chip">Data Engineering</span>
+        <span class="role-chip">Analytics Engineering</span>
+        <span class="role-chip">AI / ML Engineering</span>
+      </div>
+      <p class="hero-desc">Results-driven engineer with hands-on experience building <strong>scalable, secure, and cost-optimised data platforms</strong> for global enterprises. Specialised in the Snowflake–dbt–Airflow ecosystem, currently delivering production-grade infrastructure for <strong>Colgate-Palmolive</strong> across India and European markets.</p>
+      <div class="hero-actions">
+        <a href="mailto:pushkar1211@gmail.com" class="btn-gold">Contact Me</a>
+        <a href="https://linkedin.com/in/pushkarhedau/" target="_blank" class="btn-outline">LinkedIn</a>
+        <a href="https://github.com/PushkarHedau" target="_blank" class="btn-outline">GitHub</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <span class="hero-card-title">Professional Snapshot</span>
+        <span class="status-badge"><span class="status-dot"></span>Open to Opportunities</span>
+      </div>
+      <div class="hero-card-body">
+        <div class="impact-row">
+          <div class="impact-item"><div class="impact-num">11+</div><div class="impact-label">Prod. Models Delivered</div></div>
+          <div class="impact-item"><div class="impact-num">70%</div><div class="impact-label">Pipeline Automation Gain</div></div>
+          <div class="impact-item"><div class="impact-num">60%</div><div class="impact-label">Risk Reduction</div></div>
+          <div class="impact-item"><div class="impact-num">2</div><div class="impact-label">Certifications</div></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="stack-label">Core Technology Stack</div>
+        <div class="tech-pills">
+          <span class="tech-pill p">Snowflake</span>
+          <span class="tech-pill p">dbt Cloud</span>
+          <span class="tech-pill p">Apache Airflow</span>
+          <span class="tech-pill">GCP</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Terraform</span>
+          <span class="tech-pill">Sigma Computing</span>
+          <span class="tech-pill">BigQuery</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-header reveal">
+    <div class="sec-eye">01 / Professional Experience</div>
+    <h2 class="sec-title">Work History</h2>
+  </div>
+  <div class="timeline">
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-co">Diacto Technologies Pvt. Ltd.</span>
+        <span class="exp-period">Feb 2024 – Present</span>
+      </div>
+      <div class="exp-role">Associate Data Analyst <span style="color:var(--muted);font-weight:400;font-size:15px;font-family:var(--sans);">(Data Engineer)</span></div>
+      <div class="exp-loc">📍 Pune, Maharashtra, India</div>
+      <div class="proj-cards">
+        <div class="proj-card reveal">
+          <div class="proj-head">
+            <span class="proj-name">Governance Measure Programme</span>
+            <span class="proj-client">Client: Colgate-Palmolive · Global</span>
+          </div>
+          <div class="proj-body">
+            <div class="pt"><span class="pt-dot">◆</span><span>Designed and implemented <strong>secure data governance architecture</strong> in Snowflake using Terraform — improving policy deployment consistency by <span class="badge bg">+40%</span></span></div>
+            <div class="pt"><span class="pt-dot">◆</span><span>Developed and enforced <strong>Row Access Policies, Dynamic Data Masking, and RBAC</strong> — reducing unauthorised data exposure risk by <span class="badge bgr">–60%</span></span></div>
+            <div class="pt"><span class="pt-dot">◆</span><span>Built automated <strong>ETL/ELT pipelines</strong> using Airflow and Python for GCS → Snowflake ingestion, transformed via dbt Cloud</span></div>
+            <div class="pt"><span class="pt-dot">◆</span><span>Optimised ingestion workflows — reducing manual intervention by <span class="badge bgr">–70%</span> and improving pipeline reliability significantly</span></div>
+          </div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-head">
+            <span class="proj-name">Data Migration Programme</span>
+            <span class="proj-client">Client: Colgate-Palmolive · India & European Markets</span>
+          </div>
+          <div class="proj-body">
+            <div class="pt"><span class="pt-dot">◆</span><span>Migrated legacy BigQuery pipelines to <strong>dbt Cloud</strong> — improving model maintainability and deployment speed by <span class="badge bg">+35%</span></span></div>
+            <div class="pt"><span class="pt-dot">◆</span><span>Built reusable <strong>dbt macros, seed-driven transforms, and modular models</strong> — reducing new model development effort by <span class="badge bgr">–30%</span></span></div>
+            <div class="pt"><span class="pt-dot">◆</span><span>Engineered advanced KPIs — <strong>Share of Market, Share of Brand</strong> for Nielsen datasets — improving analytical insights for regional leadership</span></div>
+            <div class="pt"><span class="pt-dot">◆</span><span>Delivered and validated <strong>11+ production-grade analytical models</strong> for European markets</span></div>
+            <div class="pt"><span class="pt-dot">◆</span><span>Conducted knowledge transfer sessions — improving client onboarding efficiency by <span class="badge bbl">+25%</span></span></div>
+          </div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-head">
+            <span class="proj-name">BI & Analytics Enablement</span>
+            <span class="proj-client">Platform: Sigma Computing</span>
+          </div>
+          <div class="proj-body">
+            <div class="pt"><span class="pt-dot">◆</span><span>Built <strong>interactive real-time dashboards</strong> in Sigma Computing enabling self-service analytics directly on Snowflake</span></div>
+            <div class="pt"><span class="pt-dot">◆</span><span>Designed <strong>spend analytics dashboards</strong> improving vendor and procurement performance visibility for stakeholders</span></div>
+            <div class="pt"><span class="pt-dot">◆</span><span>Implemented <strong>parameterised filtering and dynamic controls</strong> — improving user exploration by <span class="badge bg">+50%</span></span></div>
+            <div class="pt"><span class="pt-dot">◆</span><span>Redesigned data models and warehouse strategies — reducing dashboard load time by <span class="badge bgr">–35%</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="sk-section">
+  <div class="sec-header reveal">
+    <div class="sec-eye">02 / Technical Competencies</div>
+    <h2 class="sec-title">Skills & Technologies</h2>
+  </div>
+  <div class="sk-grid">
+    <div class="sk-block reveal">
+      <div class="sk-block-head"><span class="sk-icon">❄️</span><span class="sk-ttl">Data Warehouse & Lake</span></div>
+      <div class="sk-list">
+        <div class="sk-row"><span>Snowflake</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>dbt Cloud</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>BigQuery</span><span class="sk-lv lv-p">Proficient</span></div>
+        <div class="sk-row"><span>Databricks</span><span class="sk-lv lv-p">Proficient</span></div>
+        <div class="sk-row"><span>MySQL / PostgreSQL</span><span class="sk-lv lv-p">Proficient</span></div>
+      </div>
+    </div>
+    <div class="sk-block reveal">
+      <div class="sk-block-head"><span class="sk-icon">⚙️</span><span class="sk-ttl">Orchestration & Pipelines</span></div>
+      <div class="sk-list">
+        <div class="sk-row"><span>Apache Airflow</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>ETL / ELT Design</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>Apache Spark</span><span class="sk-lv lv-p">Proficient</span></div>
+        <div class="sk-row"><span>CI/CD Pipelines</span><span class="sk-lv lv-p">Proficient</span></div>
+        <div class="sk-row"><span>Data Governance</span><span class="sk-lv lv-e">Expert</span></div>
+      </div>
+    </div>
+    <div class="sk-block reveal">
+      <div class="sk-block-head"><span class="sk-icon">☁️</span><span class="sk-ttl">Cloud Platforms</span></div>
+      <div class="sk-list">
+        <div class="sk-row"><span>Google Cloud (GCP)</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>Amazon Web Services</span><span class="sk-lv lv-p">Proficient</span></div>
+        <div class="sk-row"><span>Terraform (IaC)</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>Docker / Kubernetes</span><span class="sk-lv lv-p">Proficient</span></div>
+      </div>
+    </div>
+    <div class="sk-block reveal">
+      <div class="sk-block-head"><span class="sk-icon">🐍</span><span class="sk-ttl">Programming & ML</span></div>
+      <div class="sk-list">
+        <div class="sk-row"><span>Python</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>SQL</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>Pandas / NumPy</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>Scikit-learn</span><span class="sk-lv lv-p">Proficient</span></div>
+        <div class="sk-row"><span>Keras</span><span class="sk-lv lv-f">Familiar</span></div>
+      </div>
+    </div>
+    <div class="sk-block reveal">
+      <div class="sk-block-head"><span class="sk-icon">📊</span><span class="sk-ttl">Analytics & BI</span></div>
+      <div class="sk-list">
+        <div class="sk-row"><span>Sigma Computing</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>Self-service Analytics</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>KPI Engineering</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>RBAC Design</span><span class="sk-lv lv-e">Expert</span></div>
+      </div>
+    </div>
+    <div class="sk-block reveal">
+      <div class="sk-block-head"><span class="sk-icon">🔧</span><span class="sk-ttl">DevOps & Version Control</span></div>
+      <div class="sk-list">
+        <div class="sk-row"><span>GitHub / Git</span><span class="sk-lv lv-e">Expert</span></div>
+        <div class="sk-row"><span>Docker</span><span class="sk-lv lv-p">Proficient</span></div>
+        <div class="sk-row"><span>Kubernetes</span><span class="sk-lv lv-f">Familiar</span></div>
+        <div class="sk-row"><span>GitHub Actions</span><span class="sk-lv lv-p">Proficient</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="sec-header reveal">
+    <div class="sec-eye">03 / Credentials</div>
+    <h2 class="sec-title">Certifications & Education</h2>
+  </div>
+  <div class="certs-row">
+    <div class="cert-card reveal">
+      <div class="cert-ico">❄️</div>
+      <div><div class="cert-ttl">SnowPro Core Certification</div><div class="cert-org">Snowflake · COF-C02 / C03</div></div>
+      <div class="cert-status">✓ Verified</div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-ico">🔶</div>
+      <div><div class="cert-ttl">Analytics Engineering Certificate</div><div class="cert-org">dbt Cloud · Analytics Engineering</div></div>
+      <div class="cert-status">✓ Verified</div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-ico">🎓</div>
+      <div><div class="cert-ttl">B.E. — Mechanical Engineering</div><div class="cert-org">G.H. Raisoni College of Engineering, Nagpur</div></div>
+      <div class="cert-status" style="color:var(--gold);background:var(--gold-dim);border-color:var(--gold-border);">CGPA 8.29</div>
+    </div>
+    <div class="cert-card reveal" style="opacity:0.55;border-style:dashed;">
+      <div class="cert-ico" style="opacity:0.4;">+</div>
+      <div><div class="cert-ttl" style="color:var(--muted);">Certifications in Progress</div><div class="cert-org">AWS · GCP · Databricks</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="contact-grid">
+    <div>
+      <div class="sec-eye reveal" style="margin-bottom:14px;">04 / Get In Touch</div>
+      <h2 class="contact-hl reveal">Ready to contribute<br>to your <em>next</em><br>data initiative.</h2>
+      <p class="contact-desc reveal">I bring enterprise-grade experience in data engineering, analytics engineering, and ML infrastructure. Available immediately for full-time roles across tech startups, global enterprises, and consulting firms.</p>
+      <div class="contact-items reveal">
+        <a href="mailto:pushkar1211@gmail.com" class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div><div class="ci-lbl">Email</div><div class="ci-val">pushkar1211@gmail.com</div></div>
+        </a>
+        <a href="tel:+918103918139" class="contact-item">
+          <div class="ci-icon">📱</div>
+          <div><div class="ci-lbl">Phone</div><div class="ci-val">+91-81039-18139</div></div>
+        </a>
+        <a href="https://linkedin.com/in/pushkarhedau/" target="_blank" class="contact-item">
+          <div class="ci-icon">💼</div>
+          <div><div class="ci-lbl">LinkedIn</div><div class="ci-val">linkedin.com/in/pushkarhedau</div></div>
+        </a>
+        <a href="https://github.com/PushkarHedau" target="_blank" class="contact-item">
+          <div class="ci-icon">🐙</div>
+          <div><div class="ci-lbl">GitHub</div><div class="ci-val">github.com/PushkarHedau</div></div>
+        </a>
+      </div>
+    </div>
+    <div class="avail-card reveal">
+      <div class="avail-head"><div class="avail-dot"></div><div class="avail-lbl">Currently Available</div></div>
+      <div class="mini-label">Open to Roles In</div>
+      <div class="avail-roles-list">
+        <div class="avail-role">Data Engineer</div>
+        <div class="avail-role">Analytics Engineer</div>
+        <div class="avail-role">AI / ML Engineer</div>
+        <div class="avail-role">Data Platform Engineer</div>
+      </div>
+      <div class="mini-label">Sectors</div>
+      <div class="tag-row">
+        <span class="sm-tag">Tech Startups</span>
+        <span class="sm-tag">Enterprise / MNC</span>
+        <span class="sm-tag">Consulting</span>
+        <span class="sm-tag">Open to All</span>
+      </div>
+      <div class="mini-label" style="margin-top:4px;">Work Mode</div>
+      <div class="tag-row">
+        <span class="sm-tag">Full-time</span>
+        <span class="sm-tag">Hybrid</span>
+        <span class="sm-tag">Remote</span>
+        <span class="sm-tag">Relocation Open</span>
+      </div>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+        <div class="mini-label">Location</div>
+        <div style="font-size:13px;color:var(--muted);">📍 Pune, Maharashtra, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">© 2025 Pushkar Hedau · All Rights Reserved</div>
+  <div class="ft">Pune, Maharashtra, India</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 5) * 0.07 + 's';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
